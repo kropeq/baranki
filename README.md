@@ -18,7 +18,7 @@ Członkowie zespołu:
 
 Nazwa: **_US Baby Names_**
 
-Źródło: **_[Pobierz](https://www.kaggle.com/kaggle/us-baby-names)_**
+Źródło: **_[Pobierz](https://www.kaggle.com/kaggle/us-baby-names/downloads/StateNames.csv.zip)_**
 
 Plik: **_StateNames.csv_**
 
@@ -33,7 +33,7 @@ Każdy dokument w tej kolecji zawiera kolumny:
 
 Początek pliku:
 
-```
+```json
 Id,Name,Year,Gender,State,Count
 1,Mary,1910,F,AK,14
 2,Annie,1910,F,AK,12
@@ -53,6 +53,19 @@ Znaczenie kolumn:
 * ```Gender``` pole zawiera płeć dziecka
 * ```State``` pole zawiera stan w USA narodzin dziecka
 * ```Count``` pole zawiera liczbę nadań takiego imienia
+
+### Import danych
+
+```powershell "Measure-Command{mongoimport -d baranki -c names --type csv --file C:\folder\StateNames.csv --headerline}"```
+
+#### Czas importu
+
+```Total seconds : 126,9938100```
+
+##### Liczba zaimportowanych danych
+
+```5 647 426```
+
 
 ### Agregacja 1: Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
 
@@ -91,7 +104,7 @@ Wynik:
 Powyższa agregacja jest zbudowana z kilku operatorów:
 
 * ```$group``` - wymaga pola __id_, w którym wyznaczamy po jakich polach grupujemy, a pole _Number_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych tych samych imion poszczególnych płci po polu _Name_
-* ```$sort``` - opiera się o wcześniej utworzone pole _Number_ i sortuje malejąca względem tej kolumny
+* ```$sort``` - opiera się o wcześniej utworzone pole _Number_ i sortuje malejąco względem tej kolumny
 * ```$match``` - korzysta z grupowanego pola _Gender_ i wybiera za pomocą funkcji ```$regex``` rekordy zawierające słowo _F_ w polu _Gender_
 * ```$limit``` - ograniczamy liczbę rekordów wynikowych do 10
 
