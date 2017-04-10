@@ -35,6 +35,9 @@ Początek pliku:
 
 ```
 Id,Name,Year,Gender,State,Count
+1,Mary,1910,F,AK,14
+2,Annie,1910,F,AK,12
+3,Anne,1910,F,AK,10
 4,Margaret,1910,F,AK,8
 5,Helen,1910,F,AK,7
 6,Elsie,1910,F,AK,6
