@@ -109,3 +109,23 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 * ```$match``` - korzysta z grupowanego pola _Gender_ i wybiera za pomocą funkcji ```$regex``` rekordy zawierające słowo _F_ w polu _Gender_
 * ```$limit``` - ograniczamy liczbę rekordów wynikowych do 10
 
+
+### Agregacja 2: Znalezienie okresu największej popularności wybranych imion
+
+#### Imię "Franklin"
+
+```js
+db.names.aggregate( 
+	{ $match: 
+		{ 
+			Name: { $in: ["Franklin"]  }
+		}
+	},
+	{ $group: {
+		_id: { Year: "$Year", Name: "$Name" },
+		Number: { $sum: "$Count" }
+	}},
+	{ $sort: { "_id.Year" : 1, "_id.Name": 1 }},
+	{ $out : "agr2" }
+)
+```
