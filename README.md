@@ -129,3 +129,5 @@ db.names.aggregate(
 	{ $out : "agr2" }
 )
 ```
+#### Eksport wyniku zapytania do pliku CSV
+mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv
