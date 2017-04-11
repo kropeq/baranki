@@ -153,7 +153,7 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 * ```$out``` - wyniki tej agregacji zostają umieszczone w nowej kolekcji _agr2_
 
 #### Eksport wyniku zapytania do pliku CSV
-mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv
+```mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv```
 
 #### Wynik zapytania przedstawiony na wykresie
 
