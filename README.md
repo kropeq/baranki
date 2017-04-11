@@ -98,7 +98,7 @@ Wynik:
 { "_id" : { "Gender" : "F", "Name" : "Barbara" }, "Number" : 1422972 }
 { "_id" : { "Gender" : "F", "Name" : "Margaret" }, "Number" : 1121985 }
 { "_id" : { "Gender" : "F", "Name" : "Susan" }, "Number" : 1108255 }
-{ "_id" : { "Gender" : "F", "Name" : "Dorothi" }, "Number" : 1051603 }
+{ "_id" : { "Gender" : "F", "Name" : "Dorothy" }, "Number" : 1051603 }
 { "_id" : { "Gender" : "F", "Name" : "Jessica" }, "Number" : 1038060 }
 ```
 
@@ -112,22 +112,47 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 
 ### Agregacja 2: Znalezienie okresu największej popularności wybranych imion
 
+Agregacja ta posłuży nam do wyciągnięcia potrzebnych danych by móc stworzyć wykres wpływu ważnych osobistości na wybierane imiona dla dzieci.
+
 #### Imię "Franklin"
 
 ```js
 db.names.aggregate( 
-	{ $match: 
-		{ 
-			Name: { $in: ["Franklin"]  }
-		}
-	},
+	{ $match: { Name: "Franklin" } },
 	{ $group: {
 		_id: { Year: "$Year", Name: "$Name" },
 		Number: { $sum: "$Count" }
 	}},
-	{ $sort: { "_id.Year" : 1, "_id.Name": 1 }},
+	{ $sort: { "_id.Year" : 1}},
 	{ $out : "agr2" }
 )
 ```
+
+Wynik:
+
+```json
+{ "_id" : { "Year" : 1910, "Name" : "Franklin" }, "Number" : 113 }
+{ "_id" : { "Year" : 1911, "Name" : "Franklin" }, "Number" : 173 }
+{ "_id" : { "Year" : 1912, "Name" : "Franklin" }, "Number" : 456 }
+{ "_id" : { "Year" : 1913, "Name" : "Franklin" }, "Number" : 562 }
+{ "_id" : { "Year" : 1914, "Name" : "Franklin" }, "Number" : 740 }
+{ "_id" : { "Year" : 1915, "Name" : "Franklin" }, "Number" : 967 }
+{ "_id" : { "Year" : 1916, "Name" : "Franklin" }, "Number" : 1053 }
+{ "_id" : { "Year" : 1917, "Name" : "Franklin" }, "Number" : 1164 }
+{ "_id" : { "Year" : 1918, "Name" : "Franklin" }, "Number" : 1257 }
+{ "_id" : { "Year" : 1919, "Name" : "Franklin" }, "Number" : 1186 }
+{ "_id" : { "Year" : 1920, "Name" : "Franklin" }, "Number" : 1435 }
+...
+```
+
+Powyższa agregacja jest zbudowana z kilku operatorów:
+
+* ```$match``` - wybiera z bazy tylko te rekordy, które zawierają w polu _Name_ słowo _Franklin_
+* ```$group``` - wymaga pola __id_, w którym wyznaczamy po jakich polach grupujemy, a pole _Number_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych tych samych imion poszczególnych płci po polu _Name_
+* ```$sort``` - służy do ustawienia rekordów w kolejności rosnącej względem lat z pola _Year_
+* ```$out``` - wyniki tej agregacji zostają umieszczone w nowej kolekcji _agr2_
+
 #### Eksport wyniku zapytania do pliku CSV
 mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv
+
+
