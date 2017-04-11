@@ -155,4 +155,6 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 #### Eksport wyniku zapytania do pliku CSV
 mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv
 
+#### Wynik zapytania przedstawiony na wykresie
 
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/franklin.PNG)
