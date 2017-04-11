@@ -120,7 +120,7 @@ Agregacja ta posłuży nam do wyciągnięcia potrzebnych danych by móc stworzy�
 db.names.aggregate( 
 	{ $match: { Name: "Franklin" } },
 	{ $group: {
-		_id: { Year: "$Year", Name: "$Name" },
+		_id: { Year: "$Year" },
 		Number: { $sum: "$Count" }
 	}},
 	{ $sort: { "_id.Year" : 1}},
@@ -131,17 +131,17 @@ db.names.aggregate(
 Wynik:
 
 ```json
-{ "_id" : { "Year" : 1910, "Name" : "Franklin" }, "Number" : 113 }
-{ "_id" : { "Year" : 1911, "Name" : "Franklin" }, "Number" : 173 }
-{ "_id" : { "Year" : 1912, "Name" : "Franklin" }, "Number" : 456 }
-{ "_id" : { "Year" : 1913, "Name" : "Franklin" }, "Number" : 562 }
-{ "_id" : { "Year" : 1914, "Name" : "Franklin" }, "Number" : 740 }
-{ "_id" : { "Year" : 1915, "Name" : "Franklin" }, "Number" : 967 }
-{ "_id" : { "Year" : 1916, "Name" : "Franklin" }, "Number" : 1053 }
-{ "_id" : { "Year" : 1917, "Name" : "Franklin" }, "Number" : 1164 }
-{ "_id" : { "Year" : 1918, "Name" : "Franklin" }, "Number" : 1257 }
-{ "_id" : { "Year" : 1919, "Name" : "Franklin" }, "Number" : 1186 }
-{ "_id" : { "Year" : 1920, "Name" : "Franklin" }, "Number" : 1435 }
+{ "_id" : { "Year" : 1910 }, "Number" : 113 }
+{ "_id" : { "Year" : 1911 }, "Number" : 173 }
+{ "_id" : { "Year" : 1912 }, "Number" : 456 }
+{ "_id" : { "Year" : 1913 }, "Number" : 562 }
+{ "_id" : { "Year" : 1914 }, "Number" : 740 }
+{ "_id" : { "Year" : 1915 }, "Number" : 967 }
+{ "_id" : { "Year" : 1916 }, "Number" : 1053 }
+{ "_id" : { "Year" : 1917 }, "Number" : 1164 }
+{ "_id" : { "Year" : 1918 }, "Number" : 1257 }
+{ "_id" : { "Year" : 1919 }, "Number" : 1186 }
+{ "_id" : { "Year" : 1920 }, "Number" : 1435 }
 ...
 ```
 
@@ -155,7 +155,7 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 #### Eksport wyniku zapytania do pliku CSV
 ```mongoexport -d baranki -c agr2 -f _id.Year,Number --csv > agr2.csv```
 
-![Zobacz plik](https://github.com/kropeq/baranki/blob/master/data/agr2.csv)
+![Zobacz plik csv](https://github.com/kropeq/baranki/blob/master/data/agr2.csv)
 
 #### Wynik zapytania przedstawiony na wykresie
 
