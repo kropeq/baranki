@@ -160,3 +160,6 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 #### Wynik zapytania przedstawiony na wykresie
 
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/franklin.PNG)
+
+#### Wnioski
+Franklin Delano Roosevelt objął urząd prezydenta Stanów Zjednoczonych w 1933 roku. Możemy zauważyć, że to właśnie w tym roku jego imię było najbardziej popularne wśród noworodków. Dostało je bowiem aż 5355 dzieci. Wysoka tendencja utrzymała się również w roku następnym (4144). 
