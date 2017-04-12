@@ -75,7 +75,7 @@ Znaczenie kolumn:
 Aby uzyskać 10 najczęściej nadawanych kobiecych imion dla dziecka, korzystamy z następującej agregacji:
 
 ```js
-db.baranki.aggregate(
+db.names.aggregate(
 	{ $group: { 
 		_id: { Gender: "$Gender", Name: "$Name" }, 
 		Number: { $sum: "$Count" } 
