@@ -3,7 +3,6 @@
 Członkowie zespołu:
 * Paulina Seroka
 * Michał Jaworowski
-* Adrian Pieper
 
 ### Parametry komputera testowego
 
