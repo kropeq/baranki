@@ -182,3 +182,52 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 
 #### Wnioski
 Franklin Delano Roosevelt objął urząd prezydenta Stanów Zjednoczonych w 1933 roku. Możemy zauważyć, że to właśnie w tym roku jego imię było najbardziej popularne wśród noworodków. Dostało je bowiem aż 5355 dzieci. Wysoka tendencja utrzymała się również w roku następnym (4144). 
+
+
+### Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
+
+Podobno statystycznie na 100 mężczyzn przypada 108 kobiet. Postanowiliśmy sprawdzić czy znajduje to odzwierciedlenie w naszym zbiorze.
+
+|Płeć|Teoria|Nasz zbiór|
+|:---:|:---:|:----------:|
+|Dziewczynki|108|?|
+|Chłopcy|100|?|
+
+#### Średnia roczna urodzeń danej płci
+
+Aby uzyskać średnią urodzeń płci męskiej i damskiej w celu sprawdzenia powyższej teorii, korzystamy z następującej agregacji:
+
+```js
+db.names.aggregate( 
+	{ $group: {
+		_id: { Gender: "$Gender", Year: "$Year" },
+		Suma: { $sum: "$Count" }
+	}},
+	{ $group: {
+		_id: { Gender: "$_id.Gender" },
+		Average: { $avg: "$Suma" }
+	}},
+	{ $sort: { "Average" : -1}}
+)
+```
+
+Wynik:
+
+```json
+{ "_id" : { "Gender" : "M"}, "Average" : 1477269.0571428572 }
+{ "_id" : { "Gender" : "F"}, "Average" : 1369238.8095238095 }
+```
+
+Powyższa agregacja jest zbudowana z kilku operatorów:
+
+* ```$group``` - pierwsze grupowanie wymaga pola __id_, grupuje względem pól _Gender_ oraz _Year_, a pole _Suma_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych kobiecych i męskich imion w poszczególnych latach po polu _Count_
+* ```$group``` - drugie grupowanie również wymaga pola __id_, na bazie wyniku poprzedniego grupowania grupuje względem pola __id.Gender_ i za pomocą funkcji agregacji ```$avg``` wylicza średnią ze zliczonych sum dla poszczególnych płci.
+* ```$sort``` - opiera się o wcześniej utworzone pole _Average_ i sortuje malejąco względem tego pola
+
+#### Wnioski
+Założeniem tej agregacji było sprawdzenie czy teoria o rodzeniu się większej ilości kobiet niż mężczyzn jest prawdziwa i czy stosunek tych urodzeń jest podobny jak w teorii, czyli 100 mężczyzn do 108 kobiet. W wyniku otrzymaliśmy ~1 477 269 mężczyzn do ~1 369 239 kobiet rocznie. Wynik ten pokazuje, iż jeśli ta teoria jest prawdziwa, to nie znajduje ona pokrycia w Stanach Zjednoczonych, gdyż proporcje wyszły odwrotne, około 108 urodzonych chłopców przypada na 100 urodzonych dziewczynek.
+
+|Płeć|Teoria|Nasz zbiór|
+|:---:|:---:|:----------:|
+|Dziewczynki|108|100|
+|Chłopcy|100|108|
