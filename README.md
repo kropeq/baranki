@@ -174,7 +174,7 @@ Wynik:
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/woodrow.PNG)
 
 #### Wnioski
-Imię Woodrow zaczęło być popularne od 1913 roku, kiedy to urząd prezydenta Stanów Zjednoczonych objął Woodrow Wilson. Natomiast największą popularnością cieszyło się w roku 1918. Można przypuszczać, że dlatego, iż właśnie w tym roku prezydent Wilson wsławił się wygłaszając na konferencji w Wersalu swój program pokojowy, słynne 14 punktów Wilsona, które stały się podstawą traktatu wersalskiego.
+Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urząd prezydenta Stanów Zjednoczonych objął Woodrow Wilson. Natomiast największą popularnością cieszyło się w roku 1918 (3337 dzieci). Można przypuszczać, że dlatego, iż właśnie w tym roku prezydent Wilson wsławił się wygłaszając na konferencji w Wersalu swój program pokojowy, słynne 14 punktów Wilsona, które stały się podstawą traktatu wersalskiego.
 
 #### Imię "Franklin"
 
@@ -266,7 +266,7 @@ Wynik:
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/elvis.PNG)
 
 #### Wnioski
-Jak możemy zauważyć największy skok popularności imienia Elvis przypada na rok 1955, a to dlatego, że właśnie w latach 1955-1956 muzyka Elvisa Presleya, znanego amerykańskiego piosenkarza, zaczęła być rozpoznawana na całym świecie. W latach 70 był on już gwiazdą międzynarodową, stąd większe powodzenie w nadawaniu tego imienia dzieciom niż przed narodzeniem „Króla Rock and Rolla”. Na uwagę zasługuje też fakt nagłego wzrostu popularności imienia Elvis w roku 1977, gdyż wtedy właśnie Elvis Presley zmarł.
+Jak możemy zauważyć największy skok popularności imienia Elvis przypada na rok 1956 (z 26 w roku 1955 do 389 w roku 1956), a to dlatego, że właśnie w latach 1955-1956 muzyka Elvisa Presleya, znanego amerykańskiego piosenkarza, zaczęła być rozpoznawana na całym świecie. W latach 70 był on już gwiazdą międzynarodową, stąd większe powodzenie w nadawaniu tego imienia dzieciom niż przed narodzeniem „Króla Rock and Rolla”. Na uwagę zasługuje też fakt nagłego wzrostu popularności imienia Elvis w latach 1977-1978, gdyż wtedy właśnie Elvis Presley zmarł.
 
 ### Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
 
