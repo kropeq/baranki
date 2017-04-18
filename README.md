@@ -480,6 +480,38 @@ for doc in zapytanie:
    print(doc)
 ```
 
+4. Top 2-6 najczęściej nadawanych imion męskich zaczynających się literą "M"
+
+```python
+import pymongo
+from pymongo import MongoClient
+client = MongoClient()
+
+db = client['baranki']
+collection = db['names']
+
+pipeline = [
+	{ "$match": {
+		"$and": [{
+			"Name": {	"$regex": "^M" },
+			"Gender": "M"
+		}]
+	} },
+	{ "$group": {
+		"_id": { "Name": "$Name"},
+		"Suma": { "$sum": "$Count" }
+	}},
+	{ "$sort": { "Suma" : -1}},
+	{ "$limit": 6 },
+	{ "$skip": 1 }
+]
+ 
+zapytanie = db.names.aggregate(pipeline)
+
+for doc in zapytanie:
+   print(doc)
+```
+
 5. Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych
 
 ```python
