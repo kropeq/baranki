@@ -174,7 +174,7 @@ Wynik:
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/woodrow.PNG)
 
 #### Wnioski
-Woodrow Wilson 
+Imię Woodrow zaczęło być popularne od 1913 roku, kiedy to urząd prezydenta Stanów Zjednoczonych objął Woodrow Wilson. Natomiast największą popularnością cieszyło się w roku 1918. Można przypuszczać, że dlatego, iż właśnie w tym roku prezydent Wilson wsławił się wygłaszając na konferencji w Wersalu swój program pokojowy, słynne 14 punktów Wilsona, które stały się podstawą traktatu wersalskiego.
 
 #### Imię "Franklin"
 
