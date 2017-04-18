@@ -315,3 +315,45 @@ Założeniem tej agregacji było sprawdzenie czy teoria o rodzeniu się większe
 |:---:|:---:|:----------:|
 |Dziewczynki|108|100|
 |Chłopcy|100|108|
+
+
+### Agregacja 4: Top 2-6 najczęściej nadawanych imion męskich zaczynających się literą "M".
+
+Do sprawdzenia powyższego zagadnienia posłuży nam agregacja:
+
+```js
+db.names.aggregate(
+	{ $match: {
+		$and: [{
+			Name: {	$regex: new RegExp(/^M/) },
+			Gender: "M"
+		}]
+	} },
+	{ $group: {
+		_id: { Name: "$Name"},
+		Suma: { $sum: "$Count" }
+	}},
+	{ $sort: { Suma : -1}},
+	{ $limit: 6 },
+	{ $skip: 1 }
+)
+```
+
+Wynik:
+
+
+```json
+{ "_id" : { "Name" : "Matthew"}, "Suma" : 1548424 }
+{ "_id" : { "Name" : "Mark"}, "Suma" : 1339737 }
+{ "_id" : { "Name" : "Martin"}, "Suma" : 290519 }
+{ "_id" : { "Name" : "Marvin"}, "Suma" : 242835 }
+{ "_id" : { "Name" : "Melvin"}, "Suma" : 234118 }
+```
+
+Powyższa agregacja jest zbudowana z kilku operatorów:
+
+* ```$match``` - wybiera z bazy tylko te rekordy, których pole _Name_ zaczyna się od litery _M_ oraz płeć jest _M_
+* ```$group``` - grupowanie wymaga pola __id_, na bazie wyniku poprzedniego ograniczania grupuje względem pola _Name_ i za pomocą funkcji agregacji ```$sum``` zlicza ilość nadanych imion zapisując pod nowe pole _Suma_
+* ```$sort``` - opiera się o wcześniej utworzone pole _Suma_ i sortuje malejąco względem tego pola
+* ```$limit``` - ogranicza liczbę zwracanych rekordów do 6
+* ```$skip``` - pomija pierwszy rekord nieistotny z punktu widzenia założenia wyszukiwania
