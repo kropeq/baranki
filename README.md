@@ -400,6 +400,13 @@ Wynik:
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5.PNG)
 
 ## Python
+Do tworzenia agregacji w języku Python potrzebne było zainstalowanie drivera PyMongo, pozwalającego na pełne wykorzystanie możliwości bazy danych MongoDB.
+
+* ```client``` - uruchomienie instacji MongoDB
+* ```db``` - dostęp do obiektu bazy
+* ```collection``` - dostęp do kolekcji
+* ```pipeline``` - agregacja
+* ```zapytanie``` - wynik agregacji
 
 1. Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
 
