@@ -133,6 +133,20 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 
 Agregacja ta posłuży nam do wyciągnięcia potrzebnych danych by móc stworzyć wykres wpływu ważnych osobistości na wybierane imiona dla dzieci.
 
+#### Imię "Woodrow"
+
+```js
+db.names.aggregate( 
+	{ $match: { Name: "Woodrow" } },
+	{ $group: {
+		_id: { Year: "$Year" },
+		Number: { $sum: "$Count" }
+	}},
+	{ $sort: { "_id.Year" : 1}},
+	{ $out : "agr1" }
+)
+```
+
 #### Imię "Franklin"
 
 ```js
