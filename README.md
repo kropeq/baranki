@@ -394,3 +394,7 @@ Wynik:
 { "_id" : { "Year" : 1920 }, "Number" : 2101157 }
 ...
 ```
+
+#### Wynik zapytania przedstawiony na wykresie
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5.PNG)
