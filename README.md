@@ -607,3 +607,27 @@ MongoClient.connect(url, function(err, db) {
   ```
 
 2. Znalezienie okresu największej popularności wybranych imion
+
+a) [Elvis](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_Elvis.js)
+
+```node agr2_Elvis.js > agr2_Elvis_result.csv```
+
+b) [Franklin](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_Franklin.js)
+
+```node agr2_Franklin.js > agr2_Franklin_result.csv```
+
+b) [Woodrow](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_Woodrow.js)
+
+```node agr2_Woodrow.js > agr2_Woodrow_result.csv```
+
+3. [Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr3.js)
+
+```node agr3.js > agr3_result.csv```
+
+4. [Top 2-6 najczęściej nadawanych imion męskich zaczynających się literą "M"](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr4.js)
+
+```node agr4.js > agr4_result.csv```
+
+5. [Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr5.js)
+
+```node agr5.js > agr5_result.csv```
