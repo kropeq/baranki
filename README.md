@@ -89,9 +89,7 @@ Znaczenie kolumn:
 
 ### Agregacja 1: Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
 
-#### Kobiece imiona
-
-Aby uzyskać 10 najczęściej nadawanych kobiecych imion dla dziecka, korzystamy z następującej agregacji:
+Aby uzyskać 10 najczęściej nadawanych imion dla dziecka w tym okresie, korzystamy z następującej agregacji:
 
 ```js
 db.names.aggregate(
@@ -101,7 +99,6 @@ db.names.aggregate(
 	}}, 
 	{ $sort: { Number: -1 }
 	}, 
-	{ $match: { "_id.Gender": {$regex: "F" }}},
 	{ $limit: 10 }
 )
 ```
@@ -109,24 +106,27 @@ db.names.aggregate(
 Wynik:
 
 ```json
+{ "_id" : { "Gender" : "M", "Name" : "James" }, "Number" : 4938965 }
+{ "_id" : { "Gender" : "M", "Name" : "John" }, "Number" : 4829733 }
+{ "_id" : { "Gender" : "M", "Name" : "Robert" }, "Number" : 4710600 }
+{ "_id" : { "Gender" : "M", "Name" : "Michael" }, "Number" : 4295779 }
+{ "_id" : { "Gender" : "M", "Name" : "William" }, "Number" : 3829026 }
 { "_id" : { "Gender" : "F", "Name" : "Mary" }, "Number" : 3730856 }
-{ "_id" : { "Gender" : "F", "Name" : "Patricia" }, "Number" : 1567779 }
-{ "_id" : { "Gender" : "F", "Name" : "Elizabeth" }, "Number" : 1500462 }
-{ "_id" : { "Gender" : "F", "Name" : "Jennifer" }, "Number" : 1461813 }
-{ "_id" : { "Gender" : "F", "Name" : "Linda" }, "Number" : 1446300 }
-{ "_id" : { "Gender" : "F", "Name" : "Barbara" }, "Number" : 1422972 }
-{ "_id" : { "Gender" : "F", "Name" : "Margaret" }, "Number" : 1121985 }
-{ "_id" : { "Gender" : "F", "Name" : "Susan" }, "Number" : 1108255 }
-{ "_id" : { "Gender" : "F", "Name" : "Dorothy" }, "Number" : 1051603 }
-{ "_id" : { "Gender" : "F", "Name" : "Jessica" }, "Number" : 1038060 }
+{ "_id" : { "Gender" : "M", "Name" : "David" }, "Number" : 3554102 }
+{ "_id" : { "Gender" : "M", "Name" : "Richard" }, "Number" : 2529952 }
+{ "_id" : { "Gender" : "M", "Name" : "Joseph" }, "Number" : 2479602 }
+{ "_id" : { "Gender" : "M", "Name" : "Charles" }, "Number" : 2244617 }
 ```
 
 Powyższa agregacja jest zbudowana z kilku operatorów:
 
 * ```$group``` - wymaga pola __id_, w którym wyznaczamy po jakich polach grupujemy, a pole _Number_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych tych samych imion poszczególnych płci po polu _Name_
 * ```$sort``` - opiera się o wcześniej utworzone pole _Number_ i sortuje malejąco względem tej kolumny
-* ```$match``` - korzysta z grupowanego pola _Gender_ i wybiera za pomocą funkcji ```$regex``` rekordy zawierające słowo _F_ w polu _Gender_
 * ```$limit``` - ograniczamy liczbę rekordów wynikowych do 10
+
+#### Wnioski
+
+Jak łatwo zauważyć na 10 najpopularniejszych imion aż 9 z nich są to imiona męskie. Oznacza to, iż chłopcom znacznie częściej nadawane zostają pospolite imiona niż dziewczynkom.
 
 
 ### Agregacja 2: Znalezienie okresu największej popularności wybranych imion
