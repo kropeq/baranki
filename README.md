@@ -398,3 +398,83 @@ Wynik:
 #### Wynik zapytania przedstawiony na wykresie
 
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5.PNG)
+
+## Python
+
+1. Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
+
+```python
+import pymongo
+from pymongo import MongoClient
+client = MongoClient()
+
+db = client['baranki']
+collection = db['names']
+
+pipeline = [
+	{ "$group": { 
+		"_id": { "Gender": "$Gender", "Name": "$Name" }, 
+		"Number": { "$sum": "$Count" } 
+	}}, 
+	{ "$sort": { "Number": -1 }
+	}, 
+	{ "$limit": 10 }
+]
+ 
+zapytanie = db.names.aggregate(pipeline)
+
+for doc in zapytanie:
+   print(doc)
+```
+
+3. Znalezienie okresu największej popularności wybranych imion
+a) "Woodrow"
+
+```python
+import pymongo
+from pymongo import MongoClient
+client = MongoClient()
+
+db = client['baranki']
+collection = db['names']
+
+pipeline = [
+	{ "$match": { "Name": "Woodrow" } },
+	{ "$group": {
+		"_id": { "Year": "$Year" },
+		"Number": { "$sum": "$Count" }
+	}},
+	{ "$sort": { "_id.Year" : 1}}
+]
+ 
+zapytanie = db.names.aggregate(pipeline)
+
+for doc in zapytanie:
+   print(doc)
+```
+
+5. Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych
+
+```python
+import pymongo
+from pymongo import MongoClient
+client = MongoClient()
+
+db = client['baranki']
+collection = db['names']
+
+pipeline = [
+	{ "$group": { 
+		"_id": { 
+			"Year": "$Year"}, 
+			"Number": { 
+				"$sum": "$Count"} 
+	}}, 
+	{ "$sort": { "_id.Year": 1 } }
+]
+ 
+zapytanie = db.names.aggregate(pipeline)
+
+for doc in zapytanie:
+   print(doc)
+```
