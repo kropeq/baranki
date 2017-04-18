@@ -147,6 +147,23 @@ db.names.aggregate(
 )
 ```
 
+Wynik:
+
+```json
+{ "_id" : { "Year" : 1910 }, "Number" : 11 }
+{ "_id" : { "Year" : 1911 }, "Number" : 82 }
+{ "_id" : { "Year" : 1912 }, "Number" : 1826 }
+{ "_id" : { "Year" : 1913 }, "Number" : 2314 }
+{ "_id" : { "Year" : 1914 }, "Number" : 1747 }
+{ "_id" : { "Year" : 1915 }, "Number" : 1941 }
+{ "_id" : { "Year" : 1916 }, "Number" : 2645 }
+{ "_id" : { "Year" : 1917 }, "Number" : 2422 }
+{ "_id" : { "Year" : 1918 }, "Number" : 3337 }
+{ "_id" : { "Year" : 1919 }, "Number" : 1791 }
+{ "_id" : { "Year" : 1920 }, "Number" : 733 }
+...
+```
+
 #### Imię "Franklin"
 
 ```js
