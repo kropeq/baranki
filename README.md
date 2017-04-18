@@ -167,6 +167,12 @@ Wynik:
 #### Eksport wyniku zapytania do pliku CSV
 ```mongoexport -d baranki -c agr1 -f _id.Year,Number --csv > agr1.csv```
 
+![Zobacz plik csv](https://github.com/kropeq/baranki/blob/master/data/agr1.csv)
+
+#### Wynik zapytania przedstawiony na wykresie
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/woodrow.PNG)
+
 #### Imię "Franklin"
 
 ```js
