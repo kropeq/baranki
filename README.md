@@ -253,6 +253,11 @@ Wynik:
 ...
 ```
 
+#### Eksport wyniku zapytania do pliku CSV
+```mongoexport -d baranki -c agr3 -f _id.Year,Number --csv > agr3.csv```
+
+![Zobacz plik csv](https://github.com/kropeq/baranki/blob/master/data/agr3.csv)
+
 ### Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
 
 Podobno statystycznie na 100 mężczyzn przypada 108 kobiet. Postanowiliśmy sprawdzić czy znajduje to odzwierciedlenie w naszym zbiorze.
