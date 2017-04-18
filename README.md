@@ -66,6 +66,26 @@ Znaczenie kolumn:
 
 ```5 647 426```
 
+#### Obciążenie komputera podczas importowania
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/import_CPU.png)
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/import_RAM.png)
+
+* 1.52 GB przed uruchomieniem bazy
+* 1.62 GB po uruchomieniu bazy
+* 2.43 GB po imporcie danych
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/import_DYSK.png)
+
+
+
 
 ### Agregacja 1: Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
 
