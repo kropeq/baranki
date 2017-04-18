@@ -544,3 +544,66 @@ zapytanie = db.names.aggregate(pipeline)
 for doc in zapytanie:
    print(doc)
 ```
+
+
+## JavaScript
+Do tworzenia agregacji w języku JavaScript potrzebne było zainstalowanie node.js umożliwiający połączenie z bazą danych MongoDB oraz zaciągnięcie pakietu mongodb.
+
+Przygotowanie środowiska:
+
+* Instalujemy node.js na komputerze
+* Tworzymy nowy folder, wchodzimy do niego poprzez konsolę
+* Instalujemy pakiet: **npm install mongodb --save**
+* Inicjalizacja projektu: **npm init** ( wyznaczamy własny opis projektu )
+* Instalujemy potrzebne pakiety do utworzenia projektu: **npm install**
+
+Od tego momentu skrypty będą możliwe do uruchomienia poprzez komendę **node plik.js**
+
+Krótki opis wykorzystanych elementów:
+
+* ```MongoClient.connect(url,function(err,db){})``` - metoda umożliwiająca połączenie z bazą MongoDB przez url
+* ```db``` - dostęp do obiektu bazy
+* ```db.collection('names')``` - dostęp do kolekcji 'names'
+* ```col.aggregate([])``` - przesłanie agregacji do bazy
+* ```.toArray(function(err,docs){})``` - przechwycenie wyników agregacji do tablicy docs
+
+1. Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
+
+```js
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+// Connection URL
+var url = 'mongodb://localhost:27017/baranki';
+
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+
+  var col = db.collection('names');
+  console.log("Gender;Name;Number\r");
+    // Najczesciej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
+    col.aggregate([
+		{ $group: { 
+			_id: { Gender: "$Gender", Name: "$Name" }, 
+			Number: { $sum: "$Count" } 
+		}}, 
+		{ $sort: { Number: -1 }
+		}, 
+		{ $limit: 10 }
+      ]).toArray(function(err, docs) {
+      if(!err){
+      	db.close();
+      	var intCount = docs.length;
+      	if( intCount > 0 ){
+      		for (var i = 0; i < intCount; i++){
+      			console.log(docs[i]._id.Gender + ';' + docs[i]._id.Name + ';' + docs[i].Number + "\r");
+      		}
+      	}
+      } else {
+      	onErr(err, callback);
+      }
+    });
+  });
+  ```
+
+2. Znalezienie okresu największej popularności wybranych imion
