@@ -357,3 +357,40 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 * ```$sort``` - opiera się o wcześniej utworzone pole _Suma_ i sortuje malejąco względem tego pola
 * ```$limit``` - ogranicza liczbę zwracanych rekordów do 6
 * ```$skip``` - pomija pierwszy rekord nieistotny z punktu widzenia założenia wyszukiwania
+
+
+### Agregacja 5: Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych
+
+W agregacji tej chcemy sprawdzić jak kształtuje się liczba urodzeń na tle ubiegłych lat. Jest niż demograficzny czy może wyż?
+
+Do rozwiązania tego pytania użyjemy agregacji:
+
+```js
+db.names.aggregate(
+	{ $group: { 
+		_id: { 
+			Year: "$Year"}, 
+			Number: { 
+				$sum: "$Count"} 
+	}}, 
+	{ $sort: { "_id.Year": 1 } },
+	{ $out: "agr5" }
+)
+```
+
+Wynik:
+
+```json
+{ "_id" : { "Year" : 1910 }, "Number" : 516318 }
+{ "_id" : { "Year" : 1911 }, "Number" : 565810 }
+{ "_id" : { "Year" : 1912 }, "Number" : 887984 }
+{ "_id" : { "Year" : 1913 }, "Number" : 1028553 }
+{ "_id" : { "Year" : 1914 }, "Number" : 1293322 }
+{ "_id" : { "Year" : 1915 }, "Number" : 1690022 }
+{ "_id" : { "Year" : 1916 }, "Number" : 1786510 }
+{ "_id" : { "Year" : 1917 }, "Number" : 1855696 }
+{ "_id" : { "Year" : 1918 }, "Number" : 2013381 }
+{ "_id" : { "Year" : 1919 }, "Number" : 1954834 }
+{ "_id" : { "Year" : 1920 }, "Number" : 2101157 }
+...
+```
