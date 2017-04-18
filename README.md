@@ -427,8 +427,9 @@ for doc in zapytanie:
    print(doc)
 ```
 
-3. Znalezienie okresu największej popularności wybranych imion
-a) "Woodrow"
+2. Znalezienie okresu największej popularności wybranych imion
+
+a) Woodrow
 
 ```python
 import pymongo
@@ -445,6 +446,32 @@ pipeline = [
 		"Number": { "$sum": "$Count" }
 	}},
 	{ "$sort": { "_id.Year" : 1}}
+]
+ 
+zapytanie = db.names.aggregate(pipeline)
+
+for doc in zapytanie:
+   print(doc)
+```
+
+3. Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
+
+```python
+import pymongo
+from pymongo import MongoClient
+client = MongoClient()
+
+db = client['baranki']
+collection = db['names']
+
+pipeline = [
+	{ "$group": { 
+		"_id": { "Gender": "$Gender", "Name": "$Name" }, 
+		"Number": { "$sum": "$Count" } 
+	}}, 
+	{ "$sort": { "Number": -1 }
+	}, 
+	{ "$limit": 10 }
 ]
  
 zapytanie = db.names.aggregate(pipeline)
