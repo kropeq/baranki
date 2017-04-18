@@ -236,6 +236,22 @@ db.names.aggregate(
 	{ $out : "agr3" }
 )
 ```
+Wynik:
+
+```json
+{ "_id" : { "Year" : 1912 }, "Number" : 20 }
+{ "_id" : { "Year" : 1913 }, "Number" : 6 }
+{ "_id" : { "Year" : 1914 }, "Number" : 28 }
+{ "_id" : { "Year" : 1915 }, "Number" : 51 }
+{ "_id" : { "Year" : 1916 }, "Number" : 41 }
+{ "_id" : { "Year" : 1917 }, "Number" : 50 }
+{ "_id" : { "Year" : 1918 }, "Number" : 67 }
+{ "_id" : { "Year" : 1919 }, "Number" : 73 }
+{ "_id" : { "Year" : 1920 }, "Number" : 53 }
+{ "_id" : { "Year" : 1921 }, "Number" : 69 }
+{ "_id" : { "Year" : 1922 }, "Number" : 86 }
+...
+```
 
 ### Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
 
