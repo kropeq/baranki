@@ -395,6 +395,9 @@ Wynik:
 ...
 ```
 
+#### Eksport wyniku zapytania do pliku CSV
+```mongoexport -d baranki -c agr5 -f _id.Year,Number --csv > agr5.csv```
+
 #### Wynik zapytania przedstawiony na wykresie
 
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5.PNG)
