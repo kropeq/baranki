@@ -223,6 +223,19 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 #### Wnioski
 Franklin Delano Roosevelt objął urząd prezydenta Stanów Zjednoczonych w 1933 roku. Możemy zauważyć, że to właśnie w tym roku jego imię było najbardziej popularne wśród noworodków. Dostało je bowiem aż 5355 dzieci. Wysoka tendencja utrzymała się również w roku następnym (4144). 
 
+#### Imię "Elvis"
+
+```js
+db.names.aggregate( 
+	{ $match: { Name: "Elvis" } },
+	{ $group: {
+		_id: { Year: "$Year" },
+		Number: { $sum: "$Count" }
+	}},
+	{ $sort: { "_id.Year" : 1}},
+	{ $out : "agr3" }
+)
+```
 
 ### Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
 
