@@ -20,6 +20,8 @@ Nazwa: **_US Baby Names_**
 
 Źródło: **_[Pobierz](https://www.kaggle.com/kaggle/us-baby-names/downloads/StateNames.csv.zip)_**
 
+Próbka: **_[Pobierz próbkę](https://github.com/kropeq/baranki/blob/master/data/StateNames_sample.csv)_**
+
 Plik: **_StateNames.csv_**
 
 Rekordy: **_5 647 426_**
