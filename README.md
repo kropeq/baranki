@@ -118,6 +118,12 @@ Wynik:
 { "_id" : { "Gender" : "M", "Name" : "Charles" }, "Number" : 2244617 }
 ```
 
+Czas wykonania agregacji 1:
+
+```json
+10,399s
+```
+
 Powyższa agregacja jest zbudowana z kilku operatorów:
 
 * ```$group``` - wymaga pola __id_, w którym wyznaczamy po jakich polach grupujemy, a pole _Number_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych tych samych imion poszczególnych płci po polu _Name_
@@ -162,6 +168,12 @@ Wynik:
 { "_id" : { "Year" : 1919 }, "Number" : 1791 }
 { "_id" : { "Year" : 1920 }, "Number" : 733 }
 ...
+```
+
+Czas wykonania agregacji 2:
+
+```json
+2,965s
 ```
 
 #### Eksport wyniku zapytania do pliku CSV
@@ -302,6 +314,12 @@ Wynik:
 { "_id" : { "Gender" : "F"}, "Average" : 1369238.8095238095 }
 ```
 
+Czas wykonania agregacji 3:
+
+```json
+8,967s
+```
+
 Powyższa agregacja jest zbudowana z kilku operatorów:
 
 * ```$group``` - pierwsze grupowanie wymaga pola __id_, grupuje względem pól _Gender_ oraz _Year_, a pole _Suma_ korzysta z funkcji agregacji ```$sum```, która zsumowuje liczbę nadanych kobiecych i męskich imion w poszczególnych latach po polu _Count_
@@ -350,6 +368,12 @@ Wynik:
 { "_id" : { "Name" : "Melvin"}, "Suma" : 234118 }
 ```
 
+Czas wykonania agregacji 1:
+
+```json
+5,080s
+```
+
 Powyższa agregacja jest zbudowana z kilku operatorów:
 
 * ```$match``` - wybiera z bazy tylko te rekordy, których pole _Name_ zaczyna się od litery _M_ oraz płeć jest _M_
@@ -393,6 +417,12 @@ Wynik:
 { "_id" : { "Year" : 1919 }, "Number" : 1954834 }
 { "_id" : { "Year" : 1920 }, "Number" : 2101157 }
 ...
+```
+
+Czas wykonania agregacji 5:
+
+```json
+6,899s
 ```
 
 #### Eksport wyniku zapytania do pliku CSV
