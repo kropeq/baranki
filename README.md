@@ -56,6 +56,21 @@ Znaczenie kolumn:
 * ```State``` pole zawiera stan w USA narodzin dziecka
 * ```Count``` pole zawiera liczbę nadań takiego imienia
 
+### Zapytania
+
+* Agregacja 1: Najczęściej nadawane imiona w Stanach Zjednoczonych w latach 1910-2014
+
+* Agregacja 2: Znalezienie okresu największej popularności wybranych imion
+
+* Agregacja 3: Średnia roczna urodzeń dziewczynek i chłopców w Stanach Zjednoczonych w latach 1910-2014
+
+* Agregacja 4: Top 2-6 najczęściej nadawanych imion męskich zaczynających się literą "M".
+
+* Agregacja 5: Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych
+
+
+
+
 ### Import danych
 
 ```powershell "Measure-Command{mongoimport -d baranki -c names --type csv --file C:\folder\StateNames.csv --headerline}"```
@@ -145,13 +160,13 @@ Agregacja ta posłuży nam do wyciągnięcia potrzebnych danych by móc stworzy�
 
 ```js
 db.names.aggregate( 
-	{ $match: { Name: "Woodrow" } },
-	{ $group: {
-		_id: { Year: "$Year" },
-		Number: { $sum: "$Count" }
-	}},
-	{ $sort: { "_id.Year" : 1}},
-	{ $out : "agr1" }
+  { $match: { Name: "Woodrow" } },
+  { $group: {
+    _id: { Year: "$Year" },
+    Number: { $sum: "$Count" }
+  }},
+  { $sort: { "_id.Year" : 1}},
+  { $out : "agr1" }
 )
 ```
 
@@ -194,13 +209,13 @@ Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urz�
 
 ```js
 db.names.aggregate( 
-	{ $match: { Name: "Franklin" } },
-	{ $group: {
-		_id: { Year: "$Year" },
-		Number: { $sum: "$Count" }
-	}},
-	{ $sort: { "_id.Year" : 1}},
-	{ $out : "agr2" }
+  { $match: { Name: "Franklin" } },
+  { $group: {
+    _id: { Year: "$Year" },
+    Number: { $sum: "$Count" }
+  }},
+  { $sort: { "_id.Year" : 1}},
+  { $out : "agr2" }
 )
 ```
 
@@ -244,13 +259,13 @@ Franklin Delano Roosevelt objął urząd prezydenta Stanów Zjednoczonych w 1933
 
 ```js
 db.names.aggregate( 
-	{ $match: { Name: "Elvis" } },
-	{ $group: {
-		_id: { Year: "$Year" },
-		Number: { $sum: "$Count" }
-	}},
-	{ $sort: { "_id.Year" : 1}},
-	{ $out : "agr3" }
+  { $match: { Name: "Elvis" } },
+  { $group: {
+    _id: { Year: "$Year" },
+    Number: { $sum: "$Count" }
+  }},
+  { $sort: { "_id.Year" : 1}},
+  { $out : "agr3" }
 )
 ```
 Wynik:
@@ -297,15 +312,15 @@ Aby uzyskać średnią urodzeń płci męskiej i damskiej w celu sprawdzenia pow
 
 ```js
 db.names.aggregate( 
-	{ $group: {
-		_id: { Gender: "$Gender", Year: "$Year" },
-		Suma: { $sum: "$Count" }
-	}},
-	{ $group: {
-		_id: { Gender: "$_id.Gender" },
-		Average: { $avg: "$Suma" }
-	}},
-	{ $sort: { "Average" : -1}}
+  { $group: {
+    _id: { Gender: "$Gender", Year: "$Year" },
+    Suma: { $sum: "$Count" }
+  }},
+  { $group: {
+    _id: { Gender: "$_id.Gender" },
+    Average: { $avg: "$Suma" }
+  }},
+  { $sort: { "Average" : -1}}
 )
 ```
 
@@ -343,19 +358,19 @@ Do sprawdzenia powyższego zagadnienia posłuży nam agregacja:
 
 ```js
 db.names.aggregate(
-	{ $match: {
-		$and: [{
-			Name: {	$regex: new RegExp(/^M/) },
-			Gender: "M"
-		}]
-	} },
-	{ $group: {
-		_id: { Name: "$Name"},
-		Suma: { $sum: "$Count" }
-	}},
-	{ $sort: { Suma : -1}},
-	{ $limit: 6 },
-	{ $skip: 1 }
+  { $match: {
+    $and: [{
+      Name: { $regex: new RegExp(/^M/) },
+      Gender: "M"
+    }]
+  } },
+  { $group: {
+    _id: { Name: "$Name"},
+    Suma: { $sum: "$Count" }
+  }},
+  { $sort: { Suma : -1}},
+  { $limit: 6 },
+  { $skip: 1 }
 )
 ```
 
@@ -393,14 +408,14 @@ Do rozwiązania tego pytania użyjemy agregacji:
 
 ```js
 db.names.aggregate(
-	{ $group: { 
-		_id: { 
-			Year: "$Year"}, 
-			Number: { 
-				$sum: "$Count"} 
-	}}, 
-	{ $sort: { "_id.Year": 1 } },
-	{ $out: "agr5" }
+  { $group: { 
+    _id: { 
+      Year: "$Year"}, 
+      Number: { 
+        $sum: "$Count"} 
+    }}, 
+  { $sort: { "_id.Year": 1 } },
+  { $out: "agr5" }
 )
 ```
 
