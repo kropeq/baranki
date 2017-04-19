@@ -664,3 +664,35 @@ b) [Woodrow](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_
 5. [Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr5.js)
 
 ```node agr5.js > agr5_result.csv```
+
+
+### Podsumowanie użytych operatorów i funkcji w agregacjach
+
+|Operator|Agregacja 1|Agregacja 2|Agregacja 3|Agregacja 4|Agregacja 5|
+|--------|:---------:|:---------:|:---------:|:---------:|:---------:|
+|Czas|10,399|2,965|8,967|5,080|6,899|
+|$group|V|V|V|V|V|
+|$sort|V|V|V|V|V|
+|$match|X|V|X|V|X|
+|$sum|V|V|V|V|V|
+|$avg|X|X|V|X|X|
+|$limit|V|X|X|V|X|
+|$out|X|V|X|X|V|
+|&skip|X|X|X|V|X|
+|$regex|X|X|X|V|X|
+|$and|X|X|X|V|X|
+
+
+### Zestawienie czasów i kolejność wykorzystanych operatorów i funkcji agregacji
+
+|Agregacja 1|Agregacja 3|Agregacja 5|Agregacja 4|Agregacja 2|
+|:---------:|:---------:|:---------:|:---------:|:---------:|
+|10,399s|8,967s|6,899s|5,080s|2,965s|
+|$group|$group|$group|$match|$match|
+|$sum|$sum|$sum|$and|$group|
+|$sort|$group|$sort|$regex|$sum|
+|$limit|$avg|$out|$group|$sort|
+||$sort||$sum|$out|
+||||$sort||
+||||$limit||
+||||$skip||
