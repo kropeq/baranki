@@ -33,18 +33,18 @@ Każdy dokument w tej kolecji zawiera kolumny:
 |Id|Name|Year|Gender|State|Count|
 |---|---|---|---|---|---|
 
-Początek pliku:
+Przykładowy rekord:
 
 ```json
-Id,Name,Year,Gender,State,Count
-1,Mary,1910,F,AK,14
-2,Annie,1910,F,AK,12
-3,Anne,1910,F,AK,10
-4,Margaret,1910,F,AK,8
-5,Helen,1910,F,AK,7
-6,Elsie,1910,F,AK,6
-7,Lucy,1910,F,AK,6
-8,Dorothy,1910,F,AK,5
+{
+  "_id" : ObjectId("58ebb1538fdb91a54781be10"),
+  "Id" : 1,
+  "Name" : "Mary",
+  "Year" : 1910,
+  "Gender" : "F",
+  "State" : "AK",
+  "Count" : 14
+}
 ```
 
 Znaczenie kolumn:
@@ -110,13 +110,13 @@ Aby uzyskać 10 najczęściej nadawanych imion dla dziecka w tym okresie, korzys
 
 ```js
 db.names.aggregate(
-	{ $group: { 
-		_id: { Gender: "$Gender", Name: "$Name" }, 
-		Number: { $sum: "$Count" } 
-	}}, 
-	{ $sort: { Number: -1 }
-	}, 
-	{ $limit: 10 }
+  { $group: { 
+    _id: { Gender: "$Gender", Name: "$Name" }, 
+    Number: { $sum: "$Count" } 
+  }}, 
+  { $sort: { Number: -1 }
+  }, 
+  { $limit: 10 }
 )
 ```
 
@@ -385,7 +385,7 @@ Wynik:
 { "_id" : { "Name" : "Melvin"}, "Suma" : 234118 }
 ```
 
-Czas wykonania agregacji 1:
+Czas wykonania agregacji 4:
 
 ```json
 5,080s
