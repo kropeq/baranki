@@ -394,6 +394,26 @@ Założeniem tej agregacji było sprawdzenie czy teoria o rodzeniu się większe
 |Chłopcy|100|108|
 
 
+#### Obciążenie komputera podczas Agregacji 3
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr3_CPU.png)
+
+* Obciążony prawie całkowicie rdzeń pierwszy( CPU 0 ), drugi jedynie lekko asystuje. Brak zaangażowania innych wątków do wykonania tej agregacji.
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr3_RAM.png)
+
+* 2.43 GB stabilnie przez cały proces. Brak zaangażowania pamięci RAM do tej agregacji.
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr3_dysk.png)
+
+* Delikatne skoki obciążenia dysku podczas wykonywania agregacji 3. Największy skok podczas zwracania wyniku.
+
 ### Agregacja 4: Top 2-6 najczęściej nadawanych imion męskich zaczynających się literą "M".
 
 Do sprawdzenia powyższego zagadnienia posłuży nam agregacja:
