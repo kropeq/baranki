@@ -237,7 +237,7 @@ Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urz�
 
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_RAM.png)
 
-* 2.43 GB w procesie bezczynności, skok do 2.56 GB podczas eksportowania uzyskanego wyniku do nowej kolekcji
+* 2.43 GB stabilnie przez cały proces. Brak zaangażowania pamięci RAM do tej agregacji.
 
 ##### DYSK
 
