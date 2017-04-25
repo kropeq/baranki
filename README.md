@@ -225,6 +225,28 @@ Czas wykonania agregacji 2:
 #### Wnioski
 Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urząd prezydenta Stanów Zjednoczonych objął Woodrow Wilson. Natomiast największą popularnością cieszyło się w roku 1918 (3337 dzieci). Można przypuszczać, że dlatego, iż właśnie w tym roku prezydent Wilson wsławił się wygłaszając na konferencji w Wersalu swój program pokojowy, słynne 14 punktów Wilsona, które stały się podstawą traktatu wersalskiego.
 
+#### Obciążenie komputera podczas Agregacji 2
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_CPU.png)
+
+* Obciążony głównie rdzeń pierwszy( CPU 0 ), drugi zdecydowanie mniej. Brak zaangażowania innych wątków do wykonania tej agregacji.
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_RAM.png)
+
+* 2.43 GB w procesie bezczynności, skok do 2.56 GB podczas eksportowania uzyskanego wyniku do nowej kolekcji
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_dysk.png)
+
+* delikatne skoki obciążenia dysku podczas wykonywania agregacji 2. Największy skok podczas eksportowania wyniku do nowej kolekcji.
+
+
+
 #### Imię "Franklin"
 
 ```js
