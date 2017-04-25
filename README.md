@@ -235,7 +235,7 @@ Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urz�
 
 ##### RAM
 
-
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_RAM.png)
 
 * 2.43 GB w procesie bezczynności, skok do 2.56 GB podczas eksportowania uzyskanego wyniku do nowej kolekcji
 
@@ -531,6 +531,26 @@ Czas wykonania agregacji 5:
 #### Wynik zapytania przedstawiony na wykresie
 
 ![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5.PNG)
+
+#### Obciążenie komputera podczas Agregacji 5
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5_CPU.png)
+
+* Rdzeń pierwszy( CPU 0 ) zdecydowanie bardziej obciążony od rdzenia drugiego( CPU 2 ) podczas wykonywania agregacji, dodatkowo lekko zaangażowany 3-ci wątek( CPU 1 ).
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5_RAM.png)
+
+* 2.43 GB stabilnie, bez zmian podczas wykonywania agregacji 5
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr5_dysk.png)
+
+* praktycznie bezczynny dysk podczas wykonywania agregacji 5( jedyny skok podczas eksportowania wyniku do nowej kolekcji )
 
 ## Python
 Do tworzenia agregacji w języku Python potrzebne było zainstalowanie drivera PyMongo, pozwalającego na pełne wykorzystanie możliwości bazy danych MongoDB.
