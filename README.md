@@ -235,7 +235,7 @@ Imię Woodrow zaczęło być popularne od 1913 roku (2314 dzieci), kiedy to urz�
 
 ##### RAM
 
-![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr2_RAM.png)
+
 
 * 2.43 GB w procesie bezczynności, skok do 2.56 GB podczas eksportowania uzyskanego wyniku do nowej kolekcji
 
@@ -460,6 +460,27 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 * ```$sort``` - opiera się o wcześniej utworzone pole _Suma_ i sortuje malejąco względem tego pola
 * ```$limit``` - ogranicza liczbę zwracanych rekordów do 6
 * ```$skip``` - pomija pierwszy rekord nieistotny z punktu widzenia założenia wyszukiwania
+
+
+#### Obciążenie komputera podczas Agregacji 4
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr4_CPU.png)
+
+* Rdzeń pierwszy( CPU 0 ) zdecydowanie bardziej obciążony od rdzenia drugiego( CPU 2 ) podczas wykonywania agregacji, dodatkowo lekko zaangażowany 3-ci wątek( CPU 1 ).
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr4_RAM.png)
+
+* 2.43 GB stabilnie, bez zmian podczas wykonywania agregacji 4
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr4_dysk.png)
+
+* praktycznie bezczynny dysk podczas wykonywania agregacji 4( delikatne skoki niezwiązane z agregacją )
 
 
 ### Agregacja 5: Liczba urodzeń w kolejnych latach przedziału 1910-2014 w Stanach Zjednoczonych
