@@ -151,6 +151,26 @@ Powyższa agregacja jest zbudowana z kilku operatorów:
 
 Jak łatwo zauważyć na 10 najpopularniejszych imion aż 9 z nich są to imiona męskie. Oznacza to, iż chłopcom znacznie częściej nadawane zostają pospolite imiona niż dziewczynkom.
 
+#### Obciążenie komputera podczas Agregacji 1
+
+##### CPU
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr1_CPU.png)
+
+* Oba rdzenie procesora dość wyraźnie obciążone podczas wykonywania agregacji 1( CPU 0 i CPU 2 ), a także zaangażowany 3-ci wątek( CPU 1 ).
+
+##### RAM
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr1_RAM.png)
+
+* 2.43 GB stabilnie, bez zmian podczas wykonywania agregacji 1
+
+##### DYSK
+
+![alt tag](https://github.com/kropeq/baranki/blob/master/images/agr1_dysk.png)
+
+* praktycznie bezczynny dysk podczas wykonywania agregacji( 100 kb/s to najmniejsza podziałka wykresu obciążenia dysku )
+
 
 ### Agregacja 2: Znalezienie okresu największej popularności wybranych imion
 
