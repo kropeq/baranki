@@ -816,3 +816,7 @@ b) [Woodrow](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_
 ||||$sort||
 ||||$limit||
 ||||$skip||
+
+### Prezentacja
+
+[Zobacz!](https://github.com/kropeq/baranki/blob/master/data/NoSQL.pdf)
