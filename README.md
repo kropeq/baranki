@@ -788,6 +788,8 @@ b) [Woodrow](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_
 
 ### Podsumowanie użytych operatorów i funkcji w agregacjach
 
+* podane czasy są czasami uśrednionymi kilku pomiarów
+
 |Operator|Agregacja 1|Agregacja 2|Agregacja 3|Agregacja 4|Agregacja 5|
 |--------|:---------:|:---------:|:---------:|:---------:|:---------:|
 |Czas|10,399|2,965|8,967|5,080|6,899|
@@ -804,6 +806,8 @@ b) [Woodrow](https://github.com/kropeq/baranki/blob/master/data/JavaScript/agr2_
 
 
 ### Zestawienie czasów i kolejność wykorzystanych operatorów i funkcji agregacji
+
+* podane czasy są czasami uśrednionymi kilku pomiarów
 
 |Agregacja 1|Agregacja 3|Agregacja 5|Agregacja 4|Agregacja 2|
 |:---------:|:---------:|:---------:|:---------:|:---------:|
